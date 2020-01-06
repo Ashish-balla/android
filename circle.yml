@@ -1,0 +1,19 @@
+#
+# Bulid configuration for Circle CI
+#
+
+general:
+  srtifacts:
+    -/home/macOS/FirstAutomation/app/builds/outputs/apk
+
+  machine:
+    environment:
+      ANDROID_HOME: /user/local/android-sdk-linux
+
+      dependencies:
+        override:
+          ANDROID_HOME=/Users/gravty/Library/Android/sdk-linux ./gradle dependencies
+        test:
+          override:
+            - (./gradlew assemble):
+                timeout: 360
